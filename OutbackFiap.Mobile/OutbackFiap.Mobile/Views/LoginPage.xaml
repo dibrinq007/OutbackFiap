@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:OutbackFiap.Mobile.ViewModels"
+             x:Class="OutbackFiap.Mobile.Views.LoginPage"
+             Title="Outback X"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="LOGIN" HorizontalOptions="Center" FontSize="Title" Margin="0,30,0,10" TextColor="DarkMagenta" ></Label>
+            <Entry Text="{Binding Email}" Placeholder="Email" Margin="10,10" Keyboard="Email"></Entry>
+            <Entry Text="{Binding Senha}" Placeholder="Senha" Margin="10,10" IsPassword="True"></Entry>
+            <Label Text="{Binding Message, Mode=OneWay}" IsVisible="{Binding ShowMessage, Mode=OneWay}" Margin="10,0,0,0"></Label>
+            <Button Text="LOGIN" TextColor="White" BackgroundColor="#8A2BE2" Margin="10,10,10,10" Command="{Binding LoginCommand}"></Button>
+            <Button Text="NOVO USUÁRIO" Margin="10,10,10,10" Command="{Binding CreateAccountCommand}"></Button>           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

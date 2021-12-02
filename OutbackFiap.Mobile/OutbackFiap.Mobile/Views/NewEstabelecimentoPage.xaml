@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutbackFiap.Mobile.Views.NewEstabelecimentoPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="New Item"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="Unidade*" FontSize="Medium" />
+            <Entry Text="{Binding Unidade, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Endereço*" FontSize="Medium" />
+            <Editor Text="{Binding Endereco, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Número*" FontSize="Medium" />
+            <Editor Text="{Binding Numero, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="Complemento" FontSize="Medium" />
+            <Editor Text="{Binding Complemento, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="Bairro*" FontSize="Medium" />
+            <Editor Text="{Binding Bairro, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="Cidade*" FontSize="Medium" />
+            <Editor Text="{Binding Cidade, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="Estado*" FontSize="Medium" />
+            <Editor Text="{Binding Estado, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="CEP*" FontSize="Medium" />
+            <Editor Text="{Binding CEP, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+
+            <Label Text="{Binding Message, Mode=OneWay}" 
+                   IsVisible="{Binding ShowMessage, Mode=OneWay}" 
+                   Margin="10,0,0,0"
+                   TextColor="Red"
+                   FontAttributes="Bold"
+            ></Label>
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancelar" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" BackgroundColor="Red"></Button>
+                <Button Text="Salvar" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" BackgroundColor="#8A2BE2"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

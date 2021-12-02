@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OutbackFiap.Mobile.Views.HomePage"
+             xmlns:vm="clr-namespace:OutbackFiap.Mobile.ViewModels"
+             Title="OUTBACK FIAP">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#F7F7F7</Color>
+            <Color x:Key="White">#FFFFFF</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{StaticResource White}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource White  }" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+                <ContentView Padding="0,10,0,10" VerticalOptions="FillAndExpand">
+                    <Image Source="OutBack.jpg" VerticalOptions="Center" HeightRequest="140"  />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout BackgroundColor="{StaticResource White}" Orientation="Vertical" Padding="10" Spacing="10" >
+                <Label Text="Encontre um restaurante" FontSize="Large" TextColor="DarkMagenta"  />
+                <Editor Text="{Binding SearchValue, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Placeholder="Digite o estabelecimento"/>
+
+                <Button Margin="0,10,0,0" Text="Localizar"
+                        Command="{Binding FindCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+
+                <CollectionView ItemsSource="{Binding Items}" 
+                                        SelectionMode="Single"
+                                        SelectedItem="{Binding SelectedItem}"
+                                        SelectionChangedCommand="{Binding SelectionChanged}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="0" Orientation="Vertical"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackLayout Orientation="Vertical">
+                                <Grid BackgroundColor ="White"
+                                      HeightRequest="2"/>
+                                <StackLayout Orientation="Vertical"
+                                             Padding="1"
+                                             BackgroundColor="#DDA0DD">
+                                    <Label Text="{Binding Unidade}" 
+                                                LineBreakMode="NoWrap" 
+                                                Style="{DynamicResource ListItemTextStyle}" 
+                                                FontSize="20"
+                                                FontAttributes="Bold"                                                
+                                                HorizontalTextAlignment="Center" />
+
+                                    <Label Text="{Binding Ocupacao}" 
+                                                LineBreakMode="NoWrap"
+                                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                                FontSize="15"
+                                                FontAttributes="Bold"                                            
+                                                HorizontalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
